@@ -1,0 +1,32 @@
+
+{% extends "base.html" %} {% block content %} {% load static %}
+
+<section class="content">
+    <section class="post_form">
+        <header>
+            <img src="{% static 'img/globe.png' %}" alt="">
+            <h1>Update Post</h1>
+        </header>
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <input type="text" name="name" value="{{ post.name }}" required />
+            <textarea name="body" placeholder="Tell us everything" required>{{ post.body }}</textarea>
+            {% if  post.image.url %}
+                    <img src={{post.image.url}} alt="">
+            {% endif %}
+            <div class="input1">
+                <input name="image" type="file">
+                <br>
+                <button type="submit"> submit</button>
+                <a href="/">
+                Cancel
+            </a>
+            </div>
+            
+        </form>
+    </section>
+
+    </section>
+
+
+{% endblock %}
